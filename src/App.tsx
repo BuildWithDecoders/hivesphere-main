@@ -7,7 +7,6 @@ import Header from "./components/layout/Header";
 import Index from "./pages/Index";
 import Onboarding from "./pages/Onboarding";
 import NotFound from "./pages/NotFound";
-import Discover from "./pages/Discover";
 import Register from "./pages/auth/Register";
 import SignIn from "./pages/auth/SignIn";
 import BrandDashboard from "./pages/dashboards/BrandDashboard";
@@ -22,8 +21,6 @@ import InfluencerMessages from "./pages/dashboards/influencer/InfluencerMessages
 import InfluencerProfile from "./pages/dashboards/influencer/InfluencerProfile";
 import NewCampaign from "./pages/campaigns/NewCampaign";
 import Messages from "./pages/Messages";
-import Feed from "./pages/Feed";
-import Admin from "./pages/Admin";
 
 const queryClient = new QueryClient();
 
@@ -35,7 +32,6 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<><Header /><Index /></>} />
-          <Route path="/discover" element={<Discover />} />
           <Route path="/register" element={<Register />} />
           <Route path="/onboarding" element={<Onboarding />} />
           <Route path="/signin" element={<SignIn />} />
@@ -51,8 +47,6 @@ const App = () => (
           <Route path="/dashboard/influencer/profile" element={<InfluencerProfile />} />
           <Route path="/campaigns/new" element={<NewCampaign />} />
           <Route path="/messages" element={<Messages />} />
-          <Route path="/feed" element={<Feed />} />
-          <Route path="/admin" element={<Admin />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
