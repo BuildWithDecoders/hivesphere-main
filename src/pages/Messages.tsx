@@ -63,7 +63,7 @@ const Messages = () => {
 
   return (
     <div className="container py-6">
-      <Card className="h-[calc(100vh-140px)]">
+      <Card className="h-[calc(100vh-140px)] chat-container">
         <CardContent className="h-full p-0">
           <ChatContainer
             campaign={campaign}

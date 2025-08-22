@@ -29,12 +29,12 @@ const ChatContainer = ({
       <ChatHeader campaign={campaign} recipient={recipient} />
 
       {/* Message List */}
-      <ScrollArea className="flex-1 p-4 bg-gradient-to-b from-primary/5 to-muted/10 backdrop-blur-sm">
+      <ScrollArea className="flex-1 p-4 bg-gradient-to-b from-primary/5 to-muted/10">
         <MessageList messages={messages} currentUser={currentUser} />
       </ScrollArea>
 
       {/* Message Input */}
-      <div className="p-4 border-t border-border/30">
+      <div className="p-4 border-t border-border/30 bg-background">
         <MessageInput />
       </div>
     </div>

@@ -12,15 +12,15 @@ const MessageBubble = ({ message, isCurrentUser }: MessageBubbleProps) => {
     <div className="max-w-[80%]">
       <div
         className={cn(
-          "p-4 rounded-2xl backdrop-blur-sm",
+          "p-4 rounded-2xl backdrop-blur-sm glass-bubble",
           isCurrentUser
-            ? "bg-primary/10 border border-primary/20" // Brand message (Coral)
-            : "bg-green-500/10 border border-green-500/20" // Influencer message (Evergreen)
+            ? "brand-bubble ml-auto" // Brand message (Coral)
+            : "influencer-bubble" // Influencer message (Evergreen)
         )}
       >
         <p className="text-foreground">{message.content}</p>
       </div>
-      <div className="flex items-center gap-1 mt-1 text-xs text-muted-foreground">
+      <div className="flex items-center gap-1 mt-1 text-xs text-muted-foreground justify-end">
         {new Date(message.timestamp).toLocaleTimeString([], {
           hour: "2-digit",
           minute: "2-digit",

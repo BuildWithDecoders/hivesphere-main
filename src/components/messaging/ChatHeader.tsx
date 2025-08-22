@@ -44,10 +44,13 @@ const ChatHeader = ({ campaign, recipient }: ChatHeaderProps) => {
             </Badge>
           </div>
         </div>
-        <div className="text-sm text-muted-foreground">
-          Chatting with: {recipient.name}
+        <div className="text-sm text-muted-foreground text-right">
+          <div>Chatting with: {recipient.name}</div>
           {recipient.verified && (
-            <CheckCircle className="h-3 w-3 text-green-500 inline ml-1" />
+            <div className="flex items-center justify-end mt-1">
+              <span className="text-xs">Verified</span>
+              <CheckCircle className="h-3 w-3 text-green-500 ml-1" />
+            </div>
           )}
         </div>
       </div>

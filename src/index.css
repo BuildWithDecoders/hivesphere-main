@@ -1,28 +1,29 @@
-/* Add to your existing CSS */
+/* Glassmorphism styles */
 .glass-bubble {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+  border-radius: 16px;
 }
 
-/* Brand message bubble */
+/* Brand message bubble - Coral tint */
 .brand-bubble {
-  background: rgba(255, 107, 107, 0.1); /* Coral tint */
-  border-color: rgba(255, 107, 107, 0.2);
+  background: rgba(255, 107, 107, 0.15);
+  border: 1px solid rgba(255, 107, 107, 0.3);
 }
 
-/* Influencer message bubble */
+/* Influencer message bubble - Evergreen tint */
 .influencer-bubble {
-  background: rgba(0, 200, 150, 0.1); /* Evergreen tint */
-  border-color: rgba(0, 200, 150, 0.2);
+  background: rgba(0, 200, 150, 0.15);
+  border: 1px solid rgba(0, 200, 150, 0.3);
 }
 
-/* System/offer message bubble */
+/* System/offer message bubble - Warm yellow tint */
 .system-bubble {
-  background: rgba(255, 200, 0, 0.1); /* Warm yellow tint */
-  border-color: rgba(255, 200, 0, 0.2);
+  background: rgba(255, 200, 0, 0.15);
+  border: 1px solid rgba(255, 200, 0, 0.3);
 }
 
 /* Smooth transitions */
@@ -34,4 +35,14 @@
   opacity: 1;
   transform: translateY(0);
   transition: opacity 300ms, transform 300ms;
+}
+
+/* Additional styles for better visual hierarchy */
+.chat-container {
+  background: linear-gradient(135deg, #e0f7e0 0%, #f0f9f0 100%);
+}
+
+.chat-header {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
 }

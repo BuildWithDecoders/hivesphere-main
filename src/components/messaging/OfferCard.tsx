@@ -11,10 +11,10 @@ interface OfferCardProps {
 const OfferCard = ({ offer, isCurrentUser }: OfferCardProps) => {
   return (
     <div className={cn(
-      "w-full max-w-md p-4 rounded-2xl backdrop-blur-sm border",
+      "w-full max-w-md p-4 rounded-2xl backdrop-blur-sm glass-bubble",
       isCurrentUser 
-        ? "bg-primary/10 border-primary/20" 
-        : "bg-yellow-500/10 border-yellow-500/20" // System/offer message (Warm Yellow)
+        ? "brand-bubble ml-auto" 
+        : "system-bubble"
     )}>
       <h3 className="font-semibold mb-2">New Collaboration Offer</h3>
       
