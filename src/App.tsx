@@ -47,7 +47,6 @@ const App = () => (
           <Route path="/dashboard/influencer/profile" element={<InfluencerProfile />} />
           <Route path="/campaigns/new" element={<NewCampaign />} />
           <Route path="/messages" element={<Messages />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
