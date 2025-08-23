@@ -110,33 +110,35 @@ const InfluencerEarnings = () => {
             <CardTitle>Payment History</CardTitle>
           </CardHeader>
           <CardContent>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Campaign</TableHead>
-                  <TableHead>Amount</TableHead>
-                  <TableHead>Date</TableHead>
-                  <TableHead>Status</TableHead>
-                  <TableHead className="text-right">Action</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {mockEarnings.map((earning) => (
-                  <TableRow key={earning.id}>
-                    <TableCell>
-                      <div className="font-medium">{earning.campaign}</div>
-                      <div className="text-sm text-muted-foreground">{earning.brand}</div>
-                    </TableCell>
-                    <TableCell className="font-medium">{earning.amount}</TableCell>
-                    <TableCell>{earning.date}</TableCell>
-                    <TableCell>{getStatusBadge(earning.status)}</TableCell>
-                    <TableCell className="text-right">
-                      <Button variant="ghost" size="sm">View Details</Button>
-                    </TableCell>
+            <div className="overflow-x-auto">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Campaign</TableHead>
+                    <TableHead>Amount</TableHead>
+                    <TableHead>Date</TableHead>
+                    <TableHead>Status</TableHead>
+                    <TableHead className="text-right">Action</TableHead>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+                </TableHeader>
+                <TableBody>
+                  {mockEarnings.map((earning) => (
+                    <TableRow key={earning.id}>
+                      <TableCell>
+                        <div className="font-medium whitespace-nowrap">{earning.campaign}</div>
+                        <div className="text-sm text-muted-foreground whitespace-nowrap">{earning.brand}</div>
+                      </TableCell>
+                      <TableCell className="font-medium whitespace-nowrap">{earning.amount}</TableCell>
+                      <TableCell className="whitespace-nowrap">{earning.date}</TableCell>
+                      <TableCell>{getStatusBadge(earning.status)}</TableCell>
+                      <TableCell className="text-right">
+                        <Button variant="ghost" size="sm" className="whitespace-nowrap">View Details</Button>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
           </CardContent>
         </Card>
       </main>
