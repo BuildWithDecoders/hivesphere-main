@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import DashboardLayout from "@/components/layout/DashboardLayout";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
+import DashboardHeader from "@/components/layout/DashboardHeader";
 
 const BrandProfile = () => {
   useEffect(() => {
@@ -17,16 +18,17 @@ const BrandProfile = () => {
   return (
     <DashboardLayout userRole="brand">
       <main className="container py-6 space-y-6">
-        <div className="flex items-center justify-between">
-          <h1 className="text-2xl font-semibold">Brand Profile</h1>
+        <DashboardHeader
+          title="Brand Profile"
+          description="Manage your public profile, settings, and billing information."
+        >
           <Button size="sm">
             <Edit className="h-4 w-4 mr-2" />
             Edit Profile
           </Button>
-        </div>
+        </DashboardHeader>
 
-        {/* Brand Header */}
-        <Card>
+        <Card className="dashboard-card">
           <CardContent className="p-6">
             <div className="flex flex-col md:flex-row items-start gap-6">
               <Avatar className="h-24 w-24">
@@ -80,7 +82,7 @@ const BrandProfile = () => {
           </TabsList>
 
           <TabsContent value="settings" className="space-y-4">
-            <Card>
+            <Card className="dashboard-card">
               <CardHeader><CardTitle>Brand Information</CardTitle></CardHeader>
               <CardContent className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -94,7 +96,7 @@ const BrandProfile = () => {
           </TabsContent>
 
           <TabsContent value="billing">
-            <Card>
+            <Card className="dashboard-card">
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <CardTitle>Billing & Payments</CardTitle>
@@ -130,7 +132,7 @@ const BrandProfile = () => {
           </TabsContent>
 
           <TabsContent value="notifications">
-            <Card>
+            <Card className="dashboard-card">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2"><Bell className="h-5 w-5" />Notification Preferences</CardTitle>
               </CardHeader>
@@ -154,7 +156,7 @@ const BrandProfile = () => {
           </TabsContent>
 
           <TabsContent value="security">
-            <Card>
+            <Card className="dashboard-card">
               <CardHeader><CardTitle className="flex items-center gap-2"><Shield className="h-5 w-5" />Security Settings</CardTitle></CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-center justify-between p-4 border rounded-lg">

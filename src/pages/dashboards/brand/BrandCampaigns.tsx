@@ -2,13 +2,14 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Plus, CalendarDays, Users, DollarSign, Briefcase } from "lucide-react";
+import { Plus, Users, DollarSign, Briefcase } from "lucide-react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import DashboardLayout from "@/components/layout/DashboardLayout";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Progress } from "@/components/ui/progress";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import DashboardHeader from "@/components/layout/DashboardHeader";
 
 const BrandCampaigns = () => {
   useEffect(() => {
@@ -81,15 +82,17 @@ const BrandCampaigns = () => {
   return (
     <DashboardLayout userRole="brand">
       <main className="container py-6 space-y-6">
-        <div className="flex items-center justify-between">
-          <h1 className="text-2xl font-semibold">My Campaigns</h1>
+        <DashboardHeader
+          title="My Campaigns"
+          description="Manage, track, and create all your influencer campaigns."
+        >
           <Link to="/campaigns/new">
             <Button>
               <Plus className="h-4 w-4 mr-2" />
               New Campaign
             </Button>
           </Link>
-        </div>
+        </DashboardHeader>
 
         <Tabs defaultValue="all" className="space-y-4">
           <TabsList className="grid w-full grid-cols-5">
@@ -102,7 +105,7 @@ const BrandCampaigns = () => {
 
           <TabsContent value="all" className="space-y-4">
             {mockCampaigns.length > 0 ? mockCampaigns.map((campaign) => (
-              <Card key={campaign.id} className="hover:shadow-md transition-shadow">
+              <Card key={campaign.id} className="dashboard-card">
                 <CardContent className="p-6">
                   <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                     <div className="flex-1">
@@ -127,7 +130,6 @@ const BrandCampaigns = () => {
                   <div className="border-t my-4"></div>
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
-                    {/* Stats */}
                     <div className="space-y-3">
                       <div className="flex items-center gap-2 text-sm">
                         <DollarSign className="h-4 w-4 text-muted-foreground" />
@@ -139,7 +141,6 @@ const BrandCampaigns = () => {
                       </div>
                     </div>
 
-                    {/* Influencers */}
                     <div className="flex items-center">
                       <TooltipProvider>
                         <div className="flex -space-x-2">
@@ -163,7 +164,6 @@ const BrandCampaigns = () => {
                       </TooltipProvider>
                     </div>
 
-                    {/* Progress */}
                     <div className="space-y-2">
                       <div className="flex justify-between text-sm">
                         <span className="text-muted-foreground">Progress</span>
