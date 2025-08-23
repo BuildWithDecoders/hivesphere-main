@@ -6,6 +6,12 @@ import { useState } from "react";
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const navLinks = [
+    { href: "#for-brands", label: "For Brands" },
+    { href: "#for-influencers", label: "For Influencers" },
+    { href: "#how-it-works", label: "How It Works" },
+  ];
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 minimal-nav">
       <nav className="container mx-auto px-4 py-4">
@@ -21,18 +27,15 @@ const Header = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-6">
-            <a 
-              href="#pricing" 
-              className="text-foreground/80 hover:text-foreground transition-all duration-300 font-medium text-sm"
-            >
-              Pricing
-            </a>
-            <a 
-              href="#how-it-works" 
-              className="text-foreground/80 hover:text-foreground transition-all duration-300 font-medium text-sm"
-            >
-              How it Works
-            </a>
+            {navLinks.map(link => (
+              <a 
+                key={link.href}
+                href={link.href} 
+                className="text-foreground/80 hover:text-foreground transition-all duration-300 font-medium text-sm"
+              >
+                {link.label}
+              </a>
+            ))}
             <Button 
               asChild 
               variant="ghost" 
@@ -62,20 +65,16 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden mt-4 pb-4 border-t border-border/30 backdrop-blur-sm">
             <div className="flex flex-col space-y-4 pt-4">
-              <a 
-                href="#pricing" 
-                className="text-foreground/80 hover:text-foreground transition-all duration-300 py-2 font-medium"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Pricing
-              </a>
-              <a 
-                href="#how-it-works" 
-                className="text-foreground/80 hover:text-foreground transition-all duration-300 py-2 font-medium"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                How it Works
-              </a>
+              {navLinks.map(link => (
+                 <a 
+                  key={link.href}
+                  href={link.href} 
+                  className="text-foreground/80 hover:text-foreground transition-all duration-300 py-2 font-medium"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {link.label}
+                </a>
+              ))}
               <Button 
                 asChild 
                 variant="ghost" 

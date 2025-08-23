@@ -33,17 +33,17 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold mb-4 text-foreground">For Brands</h4>
             <ul className="space-y-2 text-muted-foreground">
-              <li><Link to="/signup-brand" className="hover:text-foreground transition-colors text-sm font-light">Sign Up</Link></li>
-              <li><Link to="/campaigns/new" className="hover:text-foreground transition-colors text-sm font-light">Create Campaign</Link></li>
-              <li><a href="#pricing" className="hover:text-foreground transition-colors text-sm font-light">Pricing</a></li>
+              <li><a href="#for-brands" className="hover:text-foreground transition-colors text-sm font-light">Why Hivesphere?</a></li>
+              <li><Link to="/register?role=brand" className="hover:text-foreground transition-colors text-sm font-light">Start a Campaign</Link></li>
+              <li><a href="#how-it-works" className="hover:text-foreground transition-colors text-sm font-light">How It Works</a></li>
             </ul>
           </div>
           
           <div>
             <h4 className="font-semibold mb-4 text-foreground">For Influencers</h4>
             <ul className="space-y-2 text-muted-foreground">
-              <li><Link to="/signup-influencer" className="hover:text-foreground transition-colors text-sm font-light">Join Free</Link></li>
-              <li><a href="#how-it-works" className="hover:text-foreground transition-colors text-sm font-light">How It Works</a></li>
+              <li><a href="#for-influencers" className="hover:text-foreground transition-colors text-sm font-light">Why Join?</a></li>
+              <li><Link to="/register?role=influencer" className="hover:text-foreground transition-colors text-sm font-light">Create Profile</Link></li>
               <li><a href="#" className="hover:text-foreground transition-colors text-sm font-light">Success Stories</a></li>
             </ul>
           </div>
@@ -56,7 +56,6 @@ const Footer = () => {
           <div className="flex space-x-6 text-sm text-muted-foreground">
             <a href="#" className="hover:text-foreground transition-colors font-light">Privacy Policy</a>
             <a href="#" className="hover:text-foreground transition-colors font-light">Terms of Service</a>
-            <a href="#" className="hover:text-foreground transition-colors font-light">Cookie Policy</a>
           </div>
         </div>
       </div>

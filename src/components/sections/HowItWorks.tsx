@@ -1,26 +1,31 @@
-import { UserPlus, Search, TrendingUp } from "lucide-react";
+import { UserPlus, Search, FileText, CheckSquare } from "lucide-react";
 
 const HowItWorks = () => {
   const steps = [
     {
       icon: UserPlus,
-      title: "Create Your Account",
-      description: "Register as a brand or influencer in minutes with our simple onboarding process."
+      title: "Post a Campaign",
+      description: "Brands post a campaign with clear goals, budget, and deliverables."
     },
     {
       icon: Search,
-      title: "Discover & Connect", 
-      description: "AI-powered matching engine to find perfect partners that align with your goals."
+      title: "Apply or Get Invited", 
+      description: "Influencers can apply to campaigns that fit their style, or brands can send direct invites."
     },
     {
-      icon: TrendingUp,
-      title: "Collaborate & Grow",
-      description: "Manage campaigns, track results, and build lasting partnerships that drive growth."
+      icon: FileText,
+      title: "Agree on Terms",
+      description: "Both sides agree on the deliverables and timeline using simple, clear agreement templates."
+    },
+    {
+      icon: CheckSquare,
+      title: "Track & Complete",
+      description: "Work gets done, proof is uploaded to the dashboard, and payment is logged securely."
     }
   ];
 
   return (
-    <section id="how-it-works" className="py-16 md:py-24 bg-muted/30">
+    <section id="how-it-works" className="py-16 md:py-24 bg-background">
       <div className="container">
         <div className="text-center mb-16">
           <div className="mb-4">
@@ -30,13 +35,13 @@ const HowItWorks = () => {
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 heading-minimal">How It Works</h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed font-light">
-            Get started in three simple steps and watch your brand grow with the right influencer partnerships.
+            Get started in four simple steps and watch your brand grow with the right influencer partnerships.
           </p>
         </div>
         
-        <div className="grid md:grid-cols-3 gap-8 relative">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
           {/* Connection lines for desktop */}
-          <div className="hidden md:block absolute top-16 left-1/4 right-1/4 h-px bg-border"></div>
+          <div className="hidden lg:block absolute top-12 left-0 right-0 h-px bg-border" style={{ width: '75%', margin: '0 auto' }}></div>
           
           {steps.map((step, index) => {
             const Icon = step.icon;
