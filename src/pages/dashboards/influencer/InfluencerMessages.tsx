@@ -1,8 +1,9 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { MessageCircle, Clock, Paperclip } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { MessageCircle, Clock, Paperclip, Search } from "lucide-react";
 import { useEffect } from "react";
 import DashboardLayout from "@/components/layout/DashboardLayout";
 
@@ -54,12 +55,17 @@ const InfluencerMessages = () => {
           </Badge>
         </div>
 
+        <div className="relative">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+          <Input placeholder="Search messages or brands..." className="pl-10" />
+        </div>
+
         <div className="space-y-3">
           {mockMessages.map((message) => (
             <Card 
               key={message.id} 
               className={`cursor-pointer hover:shadow-md transition-shadow ${
-                message.unread ? 'border-primary/50 bg-primary/5' : ''
+                message.unread ? 'border-primary bg-primary/5' : ''
               }`}
             >
               <CardContent className="p-4">
@@ -76,7 +82,7 @@ const InfluencerMessages = () => {
                           {message.brand}
                         </h3>
                         {message.unread && (
-                          <div className="h-2 w-2 bg-primary rounded-full"></div>
+                          <div className="h-2 w-2 bg-primary rounded-full animate-pulse"></div>
                         )}
                       </div>
                       <div className="flex items-center gap-2 text-xs text-muted-foreground">
@@ -89,22 +95,19 @@ const InfluencerMessages = () => {
                     </div>
                     
                     <p className="text-sm text-muted-foreground mb-2">
-                      Campaign: {message.campaign}
+                      Re: <span className="font-medium">{message.campaign}</span>
                     </p>
                     
-                    <p className={`text-sm line-clamp-2 ${
-                      message.unread ? 'font-medium' : 'text-muted-foreground'
+                    <p className={`text-sm line-clamp-1 ${
+                      message.unread ? 'font-medium text-foreground' : 'text-muted-foreground'
                     }`}>
                       {message.lastMessage}
                     </p>
                     
                     <div className="flex gap-2 mt-3">
-                      <Button size="sm" variant="outline">
+                      <Button size="sm">
                         <MessageCircle className="h-4 w-4 mr-2" />
-                        Reply
-                      </Button>
-                      <Button size="sm" variant="ghost">
-                        View Campaign
+                        View Conversation
                       </Button>
                     </div>
                   </div>
@@ -119,10 +122,9 @@ const InfluencerMessages = () => {
             <CardContent className="text-center py-12">
               <MessageCircle className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
               <h3 className="text-lg font-semibold mb-2">No messages yet</h3>
-              <p className="text-muted-foreground mb-4">
-                Start applying to campaigns to receive messages from brands
+              <p className="text-muted-foreground">
+                Start applying to campaigns to receive messages from brands.
               </p>
-              <Button>Browse Campaigns</Button>
             </CardContent>
           </Card>
         )}
