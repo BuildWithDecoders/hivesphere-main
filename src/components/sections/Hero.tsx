@@ -12,10 +12,10 @@ const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-12 min-h-[90vh] items-center">
           {/* Left: Text Content */}
           <div className="pt-20 lg:pt-0 text-center lg:text-left">
-            <h1 id="hero-title" className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-[1.1] text-foreground">
+            <h1 id="hero-title" className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-[1.1] bg-gradient-to-br from-primary to-accent/70 bg-clip-text text-transparent">
               Run influencer campaigns with trust and simplicity.
             </h1>
-            <p className="text-lg md:text-xl mb-8 text-muted-foreground leading-relaxed max-w-2xl mx-auto lg:mx-0 font-light">
+            <p className="text-lg md:text-xl mb-8 text-foreground/90 leading-relaxed max-w-2xl mx-auto lg:mx-0">
               Hivesphere helps Nigerian brands connect with verified influencers, launch campaigns, and track results—all in one place. No stress, no guesswork.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
