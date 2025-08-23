@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Progress } from "@/components/ui/progress";
-import { Edit, Star, Users, TrendingUp, Instagram, Youtube, Twitter } from "lucide-react";
+import { Edit, Star, Users, TrendingUp, Instagram, Youtube, Twitter, DollarSign, Briefcase, Upload } from "lucide-react";
 import { useEffect } from "react";
 import DashboardLayout from "@/components/layout/DashboardLayout";
 
@@ -11,6 +11,13 @@ const InfluencerProfile = () => {
   useEffect(() => {
     document.title = "Profile — HiveSphere";
   }, []);
+
+  const keyStats = [
+    { icon: Users, label: "Followers", value: "12.5K", change: "+500 this week" },
+    { icon: TrendingUp, label: "Engagement", value: "6.2%", change: "Above Average" },
+    { icon: DollarSign, label: "Total Earned", value: "₦80K", change: "+25% this month" },
+    { icon: Briefcase, label: "Campaigns", value: "15", change: "2 Active" },
+  ];
 
   return (
     <DashboardLayout userRole="influencer">
@@ -23,132 +30,128 @@ const InfluencerProfile = () => {
           </Button>
         </div>
 
-        {/* Profile Header */}
-        <Card>
-          <CardContent className="p-6">
-            <div className="flex items-start gap-6">
-              <Avatar className="h-24 w-24">
-                <AvatarImage src="/placeholder.svg" alt="Profile" />
-                <AvatarFallback>JD</AvatarFallback>
-              </Avatar>
-              
-              <div className="flex-1">
-                <div className="flex items-center gap-3 mb-2">
-                  <h2 className="text-2xl font-bold">Jane Doe</h2>
-                  <Badge variant="outline" className="text-green-600 border-green-600">
-                    Verified
-                  </Badge>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {/* Left Column */}
+          <div className="lg:col-span-2 space-y-6">
+            {/* Profile Header */}
+            <Card>
+              <CardContent className="p-6">
+                <div className="flex flex-col sm:flex-row items-start gap-6">
+                  <Avatar className="h-24 w-24">
+                    <AvatarImage src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=96&h=96&fit=crop&crop=face" alt="Profile" />
+                    <AvatarFallback>JD</AvatarFallback>
+                  </Avatar>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3 mb-2">
+                      <h2 className="text-2xl font-bold">Jane Doe</h2>
+                      <Badge variant="outline" className="text-green-600 border-green-600">
+                        Verified
+                      </Badge>
+                    </div>
+                    <p className="text-muted-foreground mb-3">
+                      Lifestyle & Fashion Content Creator | Lagos, Nigeria
+                    </p>
+                    <div className="flex flex-wrap gap-4">
+                      <a href="#" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary">
+                        <Instagram className="h-4 w-4" /> @janedoe
+                      </a>
+                      <a href="#" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary">
+                        <Youtube className="h-4 w-4" /> Jane Doe
+                      </a>
+                      <a href="#" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary">
+                        <Twitter className="h-4 w-4" /> @jane_doe
+                      </a>
+                    </div>
+                  </div>
                 </div>
-                
-                <p className="text-muted-foreground mb-3">
-                  Lifestyle & Fashion Content Creator | Lagos, Nigeria
+              </CardContent>
+            </Card>
+
+            {/* About & Niches */}
+            <Card>
+              <CardHeader><CardTitle>About Me</CardTitle></CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Passionate about sustainable fashion and showcasing the best of Nigerian lifestyle. I love creating authentic, engaging content that resonates with my audience and drives real results for brands.
                 </p>
-                
-                <div className="flex gap-4 mb-4">
-                  <div className="flex items-center gap-2">
-                    <Instagram className="h-4 w-4 text-muted-foreground" />
-                    <span className="text-sm">@janedoe</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Youtube className="h-4 w-4 text-muted-foreground" />
-                    <span className="text-sm">Jane Doe</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Twitter className="h-4 w-4 text-muted-foreground" />
-                    <span className="text-sm">@jane_doe</span>
-                  </div>
+                <h4 className="font-semibold mb-2">Niches & Skills</h4>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="secondary">Fashion</Badge>
+                  <Badge variant="secondary">Lifestyle</Badge>
+                  <Badge variant="secondary">Beauty</Badge>
+                  <Badge variant="secondary">Travel</Badge>
+                  <Badge variant="outline">Content Creation</Badge>
+                  <Badge variant="outline">Video Editing</Badge>
                 </div>
-                
-                <div className="grid grid-cols-3 gap-4">
-                  <div className="text-center">
-                    <div className="text-xl font-bold">12.5K</div>
-                    <div className="text-sm text-muted-foreground">Followers</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-xl font-bold">4.8</div>
-                    <div className="text-sm text-muted-foreground">Rating</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-xl font-bold">15</div>
-                    <div className="text-sm text-muted-foreground">Campaigns</div>
-                  </div>
+              </CardContent>
+            </Card>
+
+            {/* Key Stats */}
+            <Card>
+              <CardHeader><CardTitle>Key Stats</CardTitle></CardHeader>
+              <CardContent className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {keyStats.map((stat) => {
+                  const Icon = stat.icon;
+                  return (
+                    <div key={stat.label} className="p-4 bg-muted/50 rounded-lg">
+                      <div className="flex items-center gap-2 mb-2">
+                        <Icon className="h-4 w-4 text-muted-foreground" />
+                        <h4 className="text-sm font-medium text-muted-foreground">{stat.label}</h4>
+                      </div>
+                      <p className="text-2xl font-bold">{stat.value}</p>
+                      <p className="text-xs text-green-600">{stat.change}</p>
+                    </div>
+                  );
+                })}
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Right Column */}
+          <div className="space-y-6">
+            {/* Profile Completeness */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-lg">Profile Completeness</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm font-medium">85% Complete</span>
+                  <Button size="sm" variant="outline">Complete Profile</Button>
                 </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+                <Progress value={85} className="h-2" />
+                <p className="text-sm text-muted-foreground">
+                  Add more portfolio items and verify your social accounts to improve your profile.
+                </p>
+              </CardContent>
+            </Card>
 
-        {/* Profile Completeness */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-lg">Profile Completeness</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="flex items-center justify-between">
-              <span className="text-sm font-medium">85% Complete</span>
-              <Button size="sm" variant="outline">Complete Profile</Button>
-            </div>
-            <Progress value={85} className="h-2" />
-            <div className="text-sm text-muted-foreground">
-              Add more portfolio items and verify your social accounts to improve your profile.
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Stats & Performance */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Total Earnings</CardTitle>
-              <TrendingUp className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">₦80,000</div>
-              <p className="text-xs text-green-600">+25% this month</p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Campaign Success</CardTitle>
-              <Star className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">95%</div>
-              <p className="text-xs text-muted-foreground">Completion rate</p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Engagement Rate</CardTitle>
-              <Users className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">6.2%</div>
-              <p className="text-xs text-green-600">Above average</p>
-            </CardContent>
-          </Card>
+            {/* Recent Portfolio */}
+            <Card>
+              <CardHeader>
+                <div className="flex items-center justify-between">
+                  <CardTitle>Recent Work</CardTitle>
+                  <Button size="sm" variant="outline">
+                    <Upload className="h-4 w-4 mr-2" />
+                    Add Work
+                  </Button>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-2 gap-3">
+                  {[1, 2, 3, 4].map((item) => (
+                    <div key={item} className="aspect-square bg-muted rounded-lg overflow-hidden group relative">
+                      <img src={`https://picsum.photos/seed/${item+10}/200`} alt={`Portfolio item ${item}`} className="w-full h-full object-cover" />
+                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <p className="text-white text-sm font-medium">View Work</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
         </div>
-
-        {/* Recent Portfolio */}
-        <Card>
-          <CardHeader>
-            <div className="flex items-center justify-between">
-              <CardTitle>Recent Work</CardTitle>
-              <Button size="sm" variant="outline">View All</Button>
-            </div>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {[1, 2, 3, 4].map((item) => (
-                <div key={item} className="aspect-square bg-muted rounded-lg flex items-center justify-center">
-                  <span className="text-muted-foreground">Portfolio {item}</span>
-                </div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
       </main>
     </DashboardLayout>
   );
