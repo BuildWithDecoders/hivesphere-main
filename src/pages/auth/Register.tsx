@@ -1,11 +1,11 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "@/hooks/use-toast";
 import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { CheckCircle } from "lucide-react";
 
 const Register = () => {
   const nav = useNavigate();
@@ -24,33 +24,37 @@ const Register = () => {
     
     toast({ title: "Welcome to HiveSphere!", description: "Your account has been created successfully." });
     
-    // Redirect to onboarding with selected role
     nav(`/onboarding?role=${userType}`);
   };
 
   return (
-    <main className="min-h-screen bg-gradient-hero flex items-center justify-center p-4">
-      <Card className="w-full max-w-md">
-        <CardHeader className="text-center">
-          <div className="flex justify-center mb-4">
-            <img src="/lovable-uploads/cdd54ec3-f5f9-41e6-b03a-6bb6ec87bb79.png" alt="HiveSphere logo" className="h-8 w-auto" />
+    <div className="w-full lg:grid lg:min-h-screen lg:grid-cols-2">
+      <div className="flex items-center justify-center py-12">
+        <div className="mx-auto grid w-[350px] gap-6">
+          <div className="grid gap-2 text-center">
+            <img src="/lovable-uploads/cdd54ec3-f5f9-41e6-b03a-6bb6ec87bb79.png" alt="HiveSphere logo" className="h-8 w-auto mx-auto mb-4" />
+            <h1 className="text-3xl font-bold">Create an account</h1>
+            <p className="text-balance text-muted-foreground">
+              Enter your details below to join the community
+            </p>
           </div>
-          <CardTitle className="text-2xl">Create Your Account</CardTitle>
-          <p className="text-muted-foreground">Join the HiveSphere community today</p>
-        </CardHeader>
-        <CardContent>
           <form className="grid gap-4" onSubmit={onSubmit}>
             <div className="grid gap-2">
               <Label htmlFor="name">Full Name</Label>
-              <Input id="name" placeholder="Enter your full name" required />
+              <Input id="name" placeholder="Max Robinson" required />
             </div>
             <div className="grid gap-2">
               <Label htmlFor="email">Email</Label>
-              <Input id="email" type="email" placeholder="Enter your email" required />
+              <Input
+                id="email"
+                type="email"
+                placeholder="m@example.com"
+                required
+              />
             </div>
             <div className="grid gap-2">
               <Label htmlFor="password">Password</Label>
-              <Input id="password" type="password" placeholder="Create a password" required />
+              <Input id="password" type="password" required />
             </div>
             <div className="grid gap-2">
               <Label htmlFor="userType">I am a...</Label>
@@ -58,27 +62,55 @@ const Register = () => {
                 <SelectTrigger id="userType">
                   <SelectValue placeholder="Select account type" />
                 </SelectTrigger>
-                <SelectContent className="z-50 bg-popover">
+                <SelectContent>
                   <SelectItem value="brand">Brand / Business</SelectItem>
                   <SelectItem value="influencer">Influencer / Creator</SelectItem>
                 </SelectContent>
               </Select>
             </div>
-            <div className="pt-2 space-y-3">
-              <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
-                Continue
-              </Button>
-              <div className="text-center text-sm text-muted-foreground">
-                Already have an account?{" "}
-                <Link to="/signin" className="text-primary hover:underline">
-                  Sign in
-                </Link>
-              </div>
-            </div>
+            <Button type="submit" className="w-full">
+              Create an account
+            </Button>
+            <Button variant="outline" className="w-full">
+              Sign up with Google
+            </Button>
           </form>
-        </CardContent>
-      </Card>
-    </main>
+          <div className="mt-4 text-center text-sm">
+            Already have an account?{" "}
+            <Link to="/signin" className="underline">
+              Sign in
+            </Link>
+          </div>
+        </div>
+      </div>
+      <div className="hidden bg-muted lg:block">
+        <div className="flex flex-col justify-between h-full p-12 bg-gradient-to-br from-primary/5 via-transparent to-accent/5">
+          <div>
+            <h2 className="text-3xl font-bold mb-4">Unlock Your Influence.</h2>
+            <p className="text-muted-foreground text-lg">
+              Join a community of top-tier brands and creators.
+            </p>
+            <ul className="mt-6 space-y-4">
+              <li className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-primary mt-1" />
+                <span>Find perfect matches with our AI-powered discovery engine.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-primary mt-1" />
+                <span>Manage campaigns, communication, and payments seamlessly.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-primary mt-1" />
+                <span>Track performance with real-time analytics and insights.</span>
+              </li>
+            </ul>
+          </div>
+          <footer className="text-sm text-muted-foreground">
+            © 2025 HiveSphere. All rights reserved.
+          </footer>
+        </div>
+      </div>
+    </div>
   );
 };
 

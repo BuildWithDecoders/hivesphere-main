@@ -1,10 +1,10 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "@/hooks/use-toast";
 import { useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { ArrowRight, CheckCircle } from "lucide-react";
 
 const SignIn = () => {
   const nav = useNavigate();
@@ -16,17 +16,13 @@ const SignIn = () => {
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
-    // Get form data to determine user type
     const formData = new FormData(e.currentTarget);
     const email = formData.get('email') as string;
     
-    // Simple logic to determine user type based on email or you can implement proper authentication
-    // For demo purposes, we'll check if email contains certain keywords or use a default
     const userType = email.includes('brand') || email.includes('company') ? 'brand' : 'influencer';
     
     toast({ title: "Welcome back!", description: "You have been signed in successfully." });
     
-    // Redirect to appropriate dashboard
     if (userType === 'brand') {
       nav("/dashboard/brand");
     } else {
@@ -35,45 +31,82 @@ const SignIn = () => {
   };
 
   return (
-    <main className="min-h-screen bg-gradient-hero flex items-center justify-center p-4">
-      <Card className="w-full max-w-md">
-        <CardHeader className="text-center">
-          <div className="flex justify-center mb-4">
-            <img src="/lovable-uploads/cdd54ec3-f5f9-41e6-b03a-6bb6ec87bb79.png" alt="HiveSphere logo" className="h-8 w-auto" />
+    <div className="w-full lg:grid lg:min-h-screen lg:grid-cols-2">
+      <div className="flex items-center justify-center py-12">
+        <div className="mx-auto grid w-[350px] gap-6">
+          <div className="grid gap-2 text-center">
+            <img src="/lovable-uploads/cdd54ec3-f5f9-41e6-b03a-6bb6ec87bb79.png" alt="HiveSphere logo" className="h-8 w-auto mx-auto mb-4" />
+            <h1 className="text-3xl font-bold">Welcome Back</h1>
+            <p className="text-balance text-muted-foreground">
+              Enter your credentials to access your dashboard
+            </p>
           </div>
-          <CardTitle className="text-2xl">Welcome Back</CardTitle>
-          <p className="text-muted-foreground">Sign in to your HiveSphere account</p>
-        </CardHeader>
-        <CardContent>
           <form className="grid gap-4" onSubmit={onSubmit}>
             <div className="grid gap-2">
               <Label htmlFor="email">Email</Label>
-              <Input id="email" name="email" type="email" placeholder="Enter your email" required />
+              <Input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="m@example.com"
+                required
+              />
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="password">Password</Label>
-              <Input id="password" name="password" type="password" placeholder="Enter your password" required />
-            </div>
-            <div className="pt-2 space-y-3">
-              <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
-                Sign In
-              </Button>
-              <div className="text-center text-sm text-muted-foreground">
-                Don't have an account?{" "}
-                <Link to="/register" className="text-primary hover:underline">
-                  Create one now
-                </Link>
-              </div>
-              <div className="text-center">
-                <Link to="#" className="text-sm text-muted-foreground hover:text-primary">
+              <div className="flex items-center">
+                <Label htmlFor="password">Password</Label>
+                <Link
+                  to="#"
+                  className="ml-auto inline-block text-sm underline"
+                >
                   Forgot your password?
                 </Link>
               </div>
+              <Input id="password" name="password" type="password" required />
             </div>
+            <Button type="submit" className="w-full">
+              Sign In
+            </Button>
+            <Button variant="outline" className="w-full">
+              Sign in with Google
+            </Button>
           </form>
-        </CardContent>
-      </Card>
-    </main>
+          <div className="mt-4 text-center text-sm">
+            Don&apos;t have an account?{" "}
+            <Link to="/register" className="underline">
+              Sign up
+            </Link>
+          </div>
+        </div>
+      </div>
+      <div className="hidden bg-muted lg:block">
+        <div className="flex flex-col justify-between h-full p-12 bg-gradient-to-br from-primary/5 via-transparent to-accent/5">
+          <div>
+            <h2 className="text-3xl font-bold mb-4">Unlock Your Influence.</h2>
+            <p className="text-muted-foreground text-lg">
+              Join a community of top-tier brands and creators.
+            </p>
+            <ul className="mt-6 space-y-4">
+              <li className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-primary mt-1" />
+                <span>Find perfect matches with our AI-powered discovery engine.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-primary mt-1" />
+                <span>Manage campaigns, communication, and payments seamlessly.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-primary mt-1" />
+                <span>Track performance with real-time analytics and insights.</span>
+              </li>
+            </ul>
+          </div>
+          <footer className="text-sm text-muted-foreground">
+            © 2025 HiveSphere. All rights reserved.
+          </footer>
+        </div>
+      </div>
+    </div>
   );
 };
 
