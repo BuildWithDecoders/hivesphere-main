@@ -44,7 +44,8 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply text-foreground antialiased;
+    background: linear-gradient(180deg, hsl(140, 80%, 97%), hsl(0, 0%, 100%));
   }
 }
 
@@ -69,7 +70,7 @@
   .bg-gradient-hero-minimal {
     background: radial-gradient(circle at 10% 20%, rgba(224, 247, 224, 0.8), transparent 40%),
                 radial-gradient(circle at 80% 90%, rgba(240, 249, 240, 0.7), transparent 50%),
-                #ffffff;
+                transparent;
   }
 
   /* Minimal shadow */
