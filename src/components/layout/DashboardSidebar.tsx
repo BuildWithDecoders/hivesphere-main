@@ -3,7 +3,6 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { DashboardNav } from "./DashboardNav";
 import { UserRole } from "@/pages/Onboarding";
-import logo from "@/assets/logo.png";
 
 interface DashboardSidebarProps {
   userRole: UserRole;
@@ -22,7 +21,7 @@ const DashboardSidebar = ({ userRole, isCollapsed, onToggle }: DashboardSidebarP
         isCollapsed && "px-0 justify-center"
       )}>
         <img 
-          src={logo} 
+          src="/logo.png" 
           alt="HiveSphere logo" 
           className={cn("h-8 w-auto opacity-90 transition-all", isCollapsed && "h-8 w-8 object-contain")} 
         />

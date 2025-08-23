@@ -6,7 +6,6 @@ import { toast } from "@/hooks/use-toast";
 import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { CheckCircle } from "lucide-react";
-import logo from "@/assets/logo.png";
 
 const Register = () => {
   const nav = useNavigate();
@@ -33,7 +32,7 @@ const Register = () => {
       <div className="flex items-center justify-center py-12">
         <div className="mx-auto grid w-[350px] gap-6">
           <div className="grid gap-2 text-center">
-            <img src={logo} alt="HiveSphere logo" className="h-8 w-auto mx-auto mb-4" />
+            <img src="/logo.png" alt="HiveSphere logo" className="h-8 w-auto mx-auto mb-4" />
             <h1 className="text-3xl font-bold">Create an account</h1>
             <p className="text-balance text-muted-foreground">
               Enter your details below to join the community
