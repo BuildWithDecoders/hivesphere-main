@@ -22,3 +22,20 @@ export interface Message {
   type: "text" | "offer" | "system";
   offer?: Offer;
 }
+
+export interface Conversation {
+  id: string;
+  recipient: User;
+  lastMessage: {
+    content: string;
+    timestamp: string;
+  };
+  unreadCount: number;
+  messages: Message[];
+  campaign: {
+    name: string;
+    budget: string;
+    status: "active" | "pending" | "completed";
+    verified: boolean;
+  };
+}

@@ -23,7 +23,7 @@ const BottomNavigation = ({ userRole }: BottomNavigationProps) => {
     { icon: Home, label: "Home", path: "/dashboard/brand" },
     { icon: Briefcase, label: "Campaigns", path: "/dashboard/brand/campaigns" },
     { icon: Search, label: "Discovery", path: "/dashboard/brand/discovery" },
-    { icon: BarChart3, label: "Analytics", path: "/dashboard/brand/analytics" },
+    { icon: MessageCircle, label: "Messages", path: "/dashboard/brand/messages" },
     { icon: User, label: "Profile", path: "/dashboard/brand/profile" },
   ];
 

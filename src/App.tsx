@@ -17,7 +17,6 @@ import BrandAnalytics from "./pages/dashboards/brand/BrandAnalytics";
 import BrandProfile from "./pages/dashboards/brand/BrandProfile";
 import InfluencerCampaigns from "./pages/dashboards/influencer/InfluencerCampaigns";
 import InfluencerEarnings from "./pages/dashboards/influencer/InfluencerEarnings";
-import InfluencerMessages from "./pages/dashboards/influencer/InfluencerMessages";
 import InfluencerProfile from "./pages/dashboards/influencer/InfluencerProfile";
 import NewCampaign from "./pages/campaigns/NewCampaign";
 import Messages from "./pages/Messages";
@@ -40,13 +39,13 @@ const App = () => (
           <Route path="/dashboard/brand/discovery" element={<BrandDiscovery />} />
           <Route path="/dashboard/brand/analytics" element={<BrandAnalytics />} />
           <Route path="/dashboard/brand/profile" element={<BrandProfile />} />
+          <Route path="/dashboard/brand/messages" element={<Messages />} />
           <Route path="/dashboard/influencer" element={<InfluencerDashboard />} />
           <Route path="/dashboard/influencer/campaigns" element={<InfluencerCampaigns />} />
           <Route path="/dashboard/influencer/earnings" element={<InfluencerEarnings />} />
-          <Route path="/dashboard/influencer/messages" element={<InfluencerMessages />} />
+          <Route path="/dashboard/influencer/messages" element={<Messages />} />
           <Route path="/dashboard/influencer/profile" element={<InfluencerProfile />} />
           <Route path="/campaigns/new" element={<NewCampaign />} />
-          <Route path="/messages" element={<Messages />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
