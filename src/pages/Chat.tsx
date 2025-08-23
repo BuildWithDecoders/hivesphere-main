@@ -2,9 +2,13 @@ import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import ChatContainer from "@/components/messaging/ChatContainer";
 import { Message, User } from "@/types";
+import DashboardLayout from "@/components/layout/DashboardLayout";
+import { useLocation } from "react-router-dom";
 
-const Messages = () => {
-  const [currentChat, setCurrentChat] = useState<string>("1");
+const Chat = () => {
+  const location = useLocation();
+  // In a real app, role would come from user session
+  const userRole = location.pathname.includes("brand") ? "brand" : "influencer";
 
   // Mock data
   const currentUser: User = {
@@ -62,19 +66,21 @@ const Messages = () => {
   ];
 
   return (
-    <div className="container py-6">
-      <Card className="h-[calc(100vh-140px)] chat-container">
-        <CardContent className="h-full p-0">
-          <ChatContainer
-            campaign={campaign}
-            messages={messages}
-            currentUser={currentUser}
-            recipient={recipient}
-          />
-        </CardContent>
-      </Card>
-    </div>
+    <DashboardLayout userRole={userRole}>
+      <div className="container py-6 h-full">
+        <Card className="h-full chat-container">
+          <CardContent className="h-full p-0">
+            <ChatContainer
+              campaign={campaign}
+              messages={messages}
+              currentUser={currentUser}
+              recipient={recipient}
+            />
+          </CardContent>
+        </Card>
+      </div>
+    </DashboardLayout>
   );
 };
 
-export default Messages;
+export default Chat;
