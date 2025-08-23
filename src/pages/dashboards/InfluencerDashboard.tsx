@@ -4,8 +4,10 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Briefcase, FileText, CheckCircle, Bell, DollarSign, Clock, Search } from "lucide-react";
+import { Briefcase, FileText, CheckCircle, Bell, DollarSign, Clock, Search, User } from "lucide-react";
 import DashboardLayout from "@/components/layout/DashboardLayout";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Progress } from "@/components/ui/progress";
 
 const InfluencerDashboard = () => {
   useEffect(() => {
@@ -60,10 +62,38 @@ const InfluencerDashboard = () => {
     <DashboardLayout userRole="influencer">
       <main className="container py-6 space-y-6">
         {/* Header / Welcome Section */}
-        <div>
-          <h1 className="text-3xl font-bold mb-2">Welcome back, Jane!</h1>
-          <p className="text-muted-foreground">Here's a summary of your campaign activity.</p>
-        </div>
+        <Card className="bg-gradient-to-r from-primary/5 to-transparent">
+          <CardContent className="p-6 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="flex items-center gap-4">
+              <Avatar className="h-16 w-16">
+                <AvatarImage src="/placeholder.svg" alt="Jane Doe" />
+                <AvatarFallback>JD</AvatarFallback>
+              </Avatar>
+              <div>
+                <h1 className="text-2xl font-bold">Welcome back, Jane!</h1>
+                <p className="text-muted-foreground">You have 2 new opportunities waiting for you.</p>
+                <div className="flex items-center gap-2 mt-2">
+                  <Progress value={75} className="w-32 h-2" />
+                  <span className="text-xs text-muted-foreground">Profile 75% complete</span>
+                </div>
+              </div>
+            </div>
+            <div className="flex gap-3">
+              <Button asChild variant="outline">
+                <Link to="/dashboard/influencer/profile">
+                  <User className="h-4 w-4 mr-2" />
+                  Edit Profile
+                </Link>
+              </Button>
+              <Button asChild>
+                <Link to="/dashboard/influencer/campaigns">
+                  <Search className="h-4 w-4 mr-2" />
+                  Browse Campaigns
+                </Link>
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
 
         {/* Quick Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">

@@ -41,15 +41,12 @@ const BottomNavigation = ({ userRole }: BottomNavigationProps) => {
                 key={path}
                 to={path}
                 className={cn(
-                  "flex flex-col items-center py-2 px-3 rounded-xl transition-all duration-200 min-w-0 flex-1 relative",
+                  "flex flex-col items-center justify-center py-2 px-3 rounded-xl transition-all duration-200 flex-1",
                   isActive
-                    ? "text-primary bg-primary/10 scale-105"
+                    ? "text-primary bg-primary/10"
                     : "text-muted-foreground hover:text-primary hover:bg-primary/5"
                 )}
               >
-                {isActive && (
-                  <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-primary rounded-full"></div>
-                )}
                 <Icon className={cn("h-5 w-5 mb-1 transition-transform duration-200", isActive && "scale-110")} />
                 <span className={cn("text-xs font-medium truncate", isActive && "font-semibold")}>{label}</span>
               </Link>
