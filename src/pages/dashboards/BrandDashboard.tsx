@@ -8,6 +8,7 @@ import { Plus, Bell, DollarSign, Users, TrendingUp, Calendar, Eye, MessageCircle
 import DashboardLayout from "@/components/layout/DashboardLayout";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Progress } from "@/components/ui/progress";
+import { Input } from "@/components/ui/input";
 
 const BrandDashboard = () => {
   useEffect(()=>{document.title = "Brand Dashboard — HiveSphere"},[]);
