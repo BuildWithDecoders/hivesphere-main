@@ -5,6 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { TrendingUp, TrendingDown, Users, DollarSign, Eye, Heart, Download } from "lucide-react";
 import { useEffect } from "react";
 import DashboardLayout from "@/components/layout/DashboardLayout";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 const BrandAnalytics = () => {
   useEffect(() => {
@@ -32,6 +33,15 @@ const BrandAnalytics = () => {
       roi: "240%",
       status: "completed"
     }
+  ];
+
+  const chartData = [
+    { name: 'Jan', reach: 4000, engagement: 2400 },
+    { name: 'Feb', reach: 3000, engagement: 1398 },
+    { name: 'Mar', reach: 2000, engagement: 9800 },
+    { name: 'Apr', reach: 2780, engagement: 3908 },
+    { name: 'May', reach: 1890, engagement: 4800 },
+    { name: 'Jun', reach: 2390, engagement: 3800 },
   ];
 
   return (
@@ -113,40 +123,25 @@ const BrandAnalytics = () => {
           </TabsList>
 
           <TabsContent value="overview" className="space-y-4">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Performance Trends</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="h-64 flex items-center justify-center text-muted-foreground">
-                    Chart placeholder - Performance over time
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle>Top Performing Content</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    {[1, 2, 3].map((item) => (
-                      <div key={item} className="flex items-center justify-between p-3 border rounded-lg">
-                        <div>
-                          <p className="font-medium">Campaign Post #{item}</p>
-                          <p className="text-sm text-muted-foreground">Fashion Collection</p>
-                        </div>
-                        <div className="text-right">
-                          <p className="font-medium">12.5K</p>
-                          <p className="text-sm text-muted-foreground">engagements</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
+            <Card>
+              <CardHeader>
+                <CardTitle>Performance Trends</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="h-80 w-full">
+                  <ResponsiveContainer>
+                    <LineChart data={chartData}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="name" />
+                      <YAxis />
+                      <Tooltip />
+                      <Line type="monotone" dataKey="reach" stroke="#8884d8" activeDot={{ r: 8 }} />
+                      <Line type="monotone" dataKey="engagement" stroke="#82ca9d" />
+                    </LineChart>
+                  </ResponsiveContainer>
+                </div>
+              </CardContent>
+            </Card>
           </TabsContent>
 
           <TabsContent value="campaigns" className="space-y-4">
@@ -161,26 +156,26 @@ const BrandAnalytics = () => {
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-                    <div className="text-center">
-                      <div className="text-2xl font-bold">{campaign.reach}</div>
-                      <div className="text-sm text-muted-foreground">Reach</div>
+                  <div className="grid grid-cols-2 md:grid-cols-5 gap-4 text-center">
+                    <div>
+                      <p className="text-2xl font-bold">{campaign.reach}</p>
+                      <p className="text-sm text-muted-foreground">Reach</p>
                     </div>
-                    <div className="text-center">
-                      <div className="text-2xl font-bold">{campaign.engagement}</div>
-                      <div className="text-sm text-muted-foreground">Engagement</div>
+                    <div>
+                      <p className="text-2xl font-bold">{campaign.engagement}</p>
+                      <p className="text-sm text-muted-foreground">Engagement</p>
                     </div>
-                    <div className="text-center">
-                      <div className="text-2xl font-bold">{campaign.clicks}</div>
-                      <div className="text-sm text-muted-foreground">Clicks</div>
+                    <div>
+                      <p className="text-2xl font-bold">{campaign.clicks}</p>
+                      <p className="text-sm text-muted-foreground">Clicks</p>
                     </div>
-                    <div className="text-center">
-                      <div className="text-2xl font-bold">{campaign.conversions}</div>
-                      <div className="text-sm text-muted-foreground">Conversions</div>
+                    <div>
+                      <p className="text-2xl font-bold">{campaign.conversions}</p>
+                      <p className="text-sm text-muted-foreground">Conversions</p>
                     </div>
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-green-600">{campaign.roi}</div>
-                      <div className="text-sm text-muted-foreground">ROI</div>
+                    <div>
+                      <p className="text-2xl font-bold text-green-600">{campaign.roi}</p>
+                      <p className="text-sm text-muted-foreground">ROI</p>
                     </div>
                   </div>
                 </CardContent>
@@ -190,27 +185,15 @@ const BrandAnalytics = () => {
 
           <TabsContent value="creators">
             <Card>
-              <CardHeader>
-                <CardTitle>Creator Performance</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="text-center py-8">
-                  <p className="text-muted-foreground">Creator analytics coming soon</p>
-                </div>
-              </CardContent>
+              <CardHeader><CardTitle>Creator Performance</CardTitle></CardHeader>
+              <CardContent className="text-center py-8"><p className="text-muted-foreground">Creator analytics coming soon</p></CardContent>
             </Card>
           </TabsContent>
 
           <TabsContent value="demographics">
             <Card>
-              <CardHeader>
-                <CardTitle>Audience Demographics</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="text-center py-8">
-                  <p className="text-muted-foreground">Demographic insights coming soon</p>
-                </div>
-              </CardContent>
+              <CardHeader><CardTitle>Audience Demographics</CardTitle></CardHeader>
+              <CardContent className="text-center py-8"><p className="text-muted-foreground">Demographic insights coming soon</p></CardContent>
             </Card>
           </TabsContent>
         </Tabs>

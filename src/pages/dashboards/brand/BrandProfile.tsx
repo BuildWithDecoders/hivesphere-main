@@ -6,6 +6,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Edit, CreditCard, Bell, Shield, Globe, Mail, Phone } from "lucide-react";
 import { useEffect } from "react";
 import DashboardLayout from "@/components/layout/DashboardLayout";
+import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
 
 const BrandProfile = () => {
   useEffect(() => {
@@ -26,7 +28,7 @@ const BrandProfile = () => {
         {/* Brand Header */}
         <Card>
           <CardContent className="p-6">
-            <div className="flex items-start gap-6">
+            <div className="flex flex-col md:flex-row items-start gap-6">
               <Avatar className="h-24 w-24">
                 <AvatarImage src="/placeholder.svg" alt="Brand Logo" />
                 <AvatarFallback>FN</AvatarFallback>
@@ -40,37 +42,28 @@ const BrandProfile = () => {
                   </Badge>
                 </div>
                 
-                <p className="text-muted-foreground mb-3">
+                <p className="text-muted-foreground mb-4">
                   Premium Fashion Brand | Lagos, Nigeria
                 </p>
                 
-                <div className="flex gap-4 mb-4">
-                  <div className="flex items-center gap-2">
-                    <Globe className="h-4 w-4 text-muted-foreground" />
-                    <span className="text-sm">fashionnova.ng</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Mail className="h-4 w-4 text-muted-foreground" />
-                    <span className="text-sm">hello@fashionnova.ng</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Phone className="h-4 w-4 text-muted-foreground" />
-                    <span className="text-sm">+234 812 345 6789</span>
-                  </div>
+                <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground mb-4">
+                  <a href="#" className="flex items-center gap-2 hover:text-primary"><Globe className="h-4 w-4" />fashionnova.ng</a>
+                  <a href="#" className="flex items-center gap-2 hover:text-primary"><Mail className="h-4 w-4" />hello@fashionnova.ng</a>
+                  <span className="flex items-center gap-2"><Phone className="h-4 w-4" />+234 812 345 6789</span>
                 </div>
                 
-                <div className="grid grid-cols-3 gap-4">
+                <div className="grid grid-cols-3 gap-4 border-t pt-4">
                   <div className="text-center">
-                    <div className="text-xl font-bold">8</div>
-                    <div className="text-sm text-muted-foreground">Active Campaigns</div>
+                    <p className="text-xl font-bold">8</p>
+                    <p className="text-sm text-muted-foreground">Active Campaigns</p>
                   </div>
                   <div className="text-center">
-                    <div className="text-xl font-bold">45</div>
-                    <div className="text-sm text-muted-foreground">Total Collaborations</div>
+                    <p className="text-xl font-bold">45</p>
+                    <p className="text-sm text-muted-foreground">Collaborations</p>
                   </div>
                   <div className="text-center">
-                    <div className="text-xl font-bold">4.9</div>
-                    <div className="text-sm text-muted-foreground">Brand Rating</div>
+                    <p className="text-xl font-bold">4.9 ★</p>
+                    <p className="text-sm text-muted-foreground">Brand Rating</p>
                   </div>
                 </div>
               </div>
@@ -88,53 +81,14 @@ const BrandProfile = () => {
 
           <TabsContent value="settings" className="space-y-4">
             <Card>
-              <CardHeader>
-                <CardTitle>Brand Information</CardTitle>
-              </CardHeader>
+              <CardHeader><CardTitle>Brand Information</CardTitle></CardHeader>
               <CardContent className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="text-sm font-medium">Company Name</label>
-                    <p className="text-sm text-muted-foreground mt-1">Fashion Nova Nigeria</p>
-                  </div>
-                  <div>
-                    <label className="text-sm font-medium">Industry</label>
-                    <p className="text-sm text-muted-foreground mt-1">Fashion & Lifestyle</p>
-                  </div>
-                  <div>
-                    <label className="text-sm font-medium">Location</label>
-                    <p className="text-sm text-muted-foreground mt-1">Lagos, Nigeria</p>
-                  </div>
-                  <div>
-                    <label className="text-sm font-medium">Company Size</label>
-                    <p className="text-sm text-muted-foreground mt-1">51-200 employees</p>
-                  </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div><Label>Company Name</Label><p className="text-muted-foreground">Fashion Nova Nigeria</p></div>
+                  <div><Label>Industry</Label><p className="text-muted-foreground">Fashion & Lifestyle</p></div>
+                  <div><Label>Location</Label><p className="text-muted-foreground">Lagos, Nigeria</p></div>
+                  <div><Label>Company Size</Label><p className="text-muted-foreground">51-200 employees</p></div>
                 </div>
-                <Button size="sm">Update Information</Button>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>Campaign Preferences</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div>
-                  <label className="text-sm font-medium">Preferred Content Types</label>
-                  <div className="flex flex-wrap gap-2 mt-2">
-                    <Badge variant="secondary">Instagram Posts</Badge>
-                    <Badge variant="secondary">Stories</Badge>
-                    <Badge variant="secondary">Video Reviews</Badge>
-                    <Badge variant="outline">+ Add More</Badge>
-                  </div>
-                </div>
-                <div>
-                  <label className="text-sm font-medium">Target Audience</label>
-                  <p className="text-sm text-muted-foreground mt-1">
-                    Young professionals, 18-35 years, Lagos & Abuja
-                  </p>
-                </div>
-                <Button size="sm">Update Preferences</Button>
               </CardContent>
             </Card>
           </TabsContent>
@@ -144,39 +98,31 @@ const BrandProfile = () => {
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <CardTitle>Billing & Payments</CardTitle>
-                  <Button size="sm">
-                    <CreditCard className="h-4 w-4 mr-2" />
-                    Add Payment Method
-                  </Button>
+                  <Button size="sm"><CreditCard className="h-4 w-4 mr-2" />Add Payment Method</Button>
                 </div>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className="space-y-6">
                 <div>
                   <h3 className="font-medium mb-2">Current Plan</h3>
-                  <div className="p-4 border rounded-lg">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <p className="font-medium">Professional Plan</p>
-                        <p className="text-sm text-muted-foreground">₦50,000/month</p>
-                      </div>
-                      <Badge>Active</Badge>
+                  <div className="p-4 border rounded-lg flex items-center justify-between">
+                    <div>
+                      <p className="font-medium">Professional Plan</p>
+                      <p className="text-sm text-muted-foreground">₦50,000/month</p>
                     </div>
+                    <Badge>Active</Badge>
                   </div>
                 </div>
-                
                 <div>
                   <h3 className="font-medium mb-2">Payment Methods</h3>
-                  <div className="p-4 border rounded-lg">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <CreditCard className="h-5 w-5" />
-                        <div>
-                          <p className="font-medium">•••• •••• •••• 4242</p>
-                          <p className="text-sm text-muted-foreground">Expires 12/26</p>
-                        </div>
+                  <div className="p-4 border rounded-lg flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <CreditCard className="h-5 w-5" />
+                      <div>
+                        <p className="font-medium">•••• •••• •••• 4242</p>
+                        <p className="text-sm text-muted-foreground">Expires 12/26</p>
                       </div>
-                      <Button size="sm" variant="outline">Edit</Button>
                     </div>
+                    <Button size="sm" variant="outline">Edit</Button>
                   </div>
                 </div>
               </CardContent>
@@ -186,25 +132,21 @@ const BrandProfile = () => {
           <TabsContent value="notifications">
             <Card>
               <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Bell className="h-5 w-5" />
-                  Notification Preferences
-                </CardTitle>
+                <CardTitle className="flex items-center gap-2"><Bell className="h-5 w-5" />Notification Preferences</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 {[
-                  "New campaign applications",
-                  "Campaign milestones reached",
-                  "Payment confirmations",
-                  "Weekly performance reports",
-                  "System updates"
-                ].map((notification) => (
-                  <div key={notification} className="flex items-center justify-between">
-                    <span className="text-sm">{notification}</span>
-                    <div className="flex gap-2">
-                      <Button size="sm" variant="outline">Email</Button>
-                      <Button size="sm" variant="outline">Push</Button>
+                  { id: "apps", label: "New campaign applications", desc: "Get notified when an influencer applies to your campaign." },
+                  { id: "miles", label: "Campaign milestones reached", desc: "Receive updates on campaign progress." },
+                  { id: "pay", label: "Payment confirmations", desc: "Confirmations for payments made." },
+                  { id: "reports", label: "Weekly performance reports", desc: "A summary of your campaign analytics." },
+                ].map((item) => (
+                  <div key={item.id} className="flex items-center justify-between p-4 border rounded-lg">
+                    <div>
+                      <Label htmlFor={item.id} className="font-medium">{item.label}</Label>
+                      <p className="text-sm text-muted-foreground">{item.desc}</p>
                     </div>
+                    <Switch id={item.id} />
                   </div>
                 ))}
               </CardContent>
@@ -213,35 +155,21 @@ const BrandProfile = () => {
 
           <TabsContent value="security">
             <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Shield className="h-5 w-5" />
-                  Security Settings
-                </CardTitle>
-              </CardHeader>
+              <CardHeader><CardTitle className="flex items-center gap-2"><Shield className="h-5 w-5" />Security Settings</CardTitle></CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-center justify-between p-4 border rounded-lg">
                   <div>
                     <p className="font-medium">Two-Factor Authentication</p>
-                    <p className="text-sm text-muted-foreground">Add an extra layer of security</p>
+                    <p className="text-sm text-muted-foreground">Add an extra layer of security to your account.</p>
                   </div>
                   <Button size="sm">Enable</Button>
                 </div>
-                
                 <div className="flex items-center justify-between p-4 border rounded-lg">
                   <div>
                     <p className="font-medium">Change Password</p>
-                    <p className="text-sm text-muted-foreground">Update your account password</p>
+                    <p className="text-sm text-muted-foreground">Last changed 3 months ago.</p>
                   </div>
                   <Button size="sm" variant="outline">Change</Button>
-                </div>
-                
-                <div className="flex items-center justify-between p-4 border rounded-lg">
-                  <div>
-                    <p className="font-medium">Login History</p>
-                    <p className="text-sm text-muted-foreground">View recent account activity</p>
-                  </div>
-                  <Button size="sm" variant="outline">View</Button>
                 </div>
               </CardContent>
             </Card>
