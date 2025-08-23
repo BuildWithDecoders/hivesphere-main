@@ -30,7 +30,7 @@ const BottomNavigation = ({ userRole }: BottomNavigationProps) => {
   const navItems = userRole === "influencer" ? influencerNavItems : brandNavItems;
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-lg border-t border-border shadow-lg">
+    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-lg border-t border-border shadow-lg md:hidden">
       <div className="container max-w-md mx-auto">
         <div className="flex items-center justify-around py-3">
           {navItems.map(({ icon: Icon, label, path }) => {
