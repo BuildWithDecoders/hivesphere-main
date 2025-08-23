@@ -17,7 +17,7 @@ interface ChatHeaderProps {
 
 const ChatHeader = ({ campaign, recipient }: ChatHeaderProps) => {
   return (
-    <div className="border-b border-border/30 p-4 bg-card/80 backdrop-blur-sm">
+    <div className="border-b border-border/30 p-4 md:pl-4 pl-16 bg-card/80 backdrop-blur-sm">
       <div className="flex justify-between items-start">
         <div>
           <h2 className="text-lg font-semibold flex items-center gap-2">
