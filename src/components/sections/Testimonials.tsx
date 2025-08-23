@@ -1,6 +1,13 @@
-import { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Quote } from "lucide-react";
 
 const Testimonials = () => {
   const testimonials = [
@@ -21,28 +28,23 @@ const Testimonials = () => {
       role: "Founder, Tech Startup Abuja",
       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=64&h=64&fit=crop&crop=face",
       content: "We launched our app through HiveSphere's network of tech influencers. The ROI was incredible - 300% better than traditional advertising."
+    },
+    {
+      name: "Aisha Bello",
+      role: "Food Blogger, 22K followers",
+      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=64&h=64&fit=crop&crop=face",
+      content: "Finding paid collaborations used to be a hassle. HiveSphere streamlined the entire process, from discovery to payment. Highly recommended!"
+    },
+    {
+      name: "Tunde Adekunle",
+      role: "CEO, Naija Drinks Co.",
+      image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=64&h=64&fit=crop&crop=face",
+      content: "The quality of influencers on HiveSphere is top-notch. We saw a significant lift in brand mentions and sales after just one campaign."
     }
   ];
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [testimonials.length]);
-
-  const nextTestimonial = () => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-  };
-
-  const prevTestimonial = () => {
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-  };
-
   return (
-    <section className="py-16 md:py-24 bg-background relative">
+    <section className="py-16 md:py-24 bg-muted/30 relative">
       <div className="absolute inset-0 minimal-grid opacity-15"></div>
       <div className="container">
         <div className="text-center mb-16">
@@ -57,56 +59,44 @@ const Testimonials = () => {
           </p>
         </div>
         
-        <div className="max-w-4xl mx-auto relative z-10">
-          <div className="relative minimal-glass p-8 md:p-12 rounded-2xl shadow-minimal-lg border border-border/30 hover:shadow-minimal-lg transition-all duration-300 futuristic-border">
-            <div className="flex items-center justify-between mb-8">
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={prevTestimonial}
-                className="h-10 w-10 rounded-xl bg-muted/50 hover:bg-accent hover:text-white transition-all duration-300"
-              >
-                <ChevronLeft className="w-4 h-4" />
-              </Button>
-              
-              <div className="flex space-x-2">
-                {testimonials.map((_, index) => (
-                  <button
-                    key={index}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      index === currentIndex ? 'bg-accent scale-125' : 'bg-muted hover:bg-accent/50'
-                    }`}
-                    onClick={() => setCurrentIndex(index)}
-                  />
-                ))}
-              </div>
-              
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={nextTestimonial}
-                className="h-10 w-10 rounded-xl bg-muted/50 hover:bg-accent hover:text-white transition-all duration-300"
-              >
-                <ChevronRight className="w-4 h-4" />
-              </Button>
-            </div>
-            
-            <div className="text-center">
-              <div className="mb-6">
-                <img
-                  src={testimonials[currentIndex].image}
-                  alt={testimonials[currentIndex].name}
-                  className="w-16 h-16 rounded-2xl mx-auto mb-4 object-cover border border-border/30 shadow-minimal"
-                />
-                <h4 className="font-semibold text-lg mb-1">{testimonials[currentIndex].name}</h4>
-                <p className="text-muted-foreground text-sm font-light">{testimonials[currentIndex].role}</p>
-              </div>
-              <blockquote className="text-lg md:text-xl leading-relaxed text-foreground/90 relative font-light">
-                "{testimonials[currentIndex].content}"
-              </blockquote>
-            </div>
-          </div>
-        </div>
+        <Carousel
+          opts={{
+            align: "start",
+            loop: true,
+          }}
+          className="w-full max-w-6xl mx-auto"
+        >
+          <CarouselContent className="-ml-8">
+            {testimonials.map((testimonial, index) => (
+              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 pl-8">
+                <div className="h-full">
+                  <Card className="h-full flex flex-col justify-between minimal-glass futuristic-border shadow-minimal hover-lift-minimal">
+                    <CardContent className="p-6">
+                      <Quote className="w-8 h-8 text-accent/30 mb-4" />
+                      <p className="text-foreground/90 mb-6 font-light">
+                        "{testimonial.content}"
+                      </p>
+                    </CardContent>
+                    <div className="p-6 pt-0 mt-auto">
+                      <div className="flex items-center gap-4">
+                        <Avatar className="w-12 h-12 border-2 border-border/50">
+                          <AvatarImage src={testimonial.image} alt={testimonial.name} />
+                          <AvatarFallback>{testimonial.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
+                        </Avatar>
+                        <div>
+                          <h4 className="font-semibold">{testimonial.name}</h4>
+                          <p className="text-muted-foreground text-sm font-light">{testimonial.role}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </Card>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="ml-[-50px]" />
+          <CarouselNext className="mr-[-50px]" />
+        </Carousel>
       </div>
     </section>
   );
