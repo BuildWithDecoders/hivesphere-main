@@ -14,8 +14,13 @@ const ForInfluencers = () => {
       <div className="container">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
-             <div className="aspect-square bg-card rounded-2xl flex items-center justify-center p-8 futuristic-border">
-               <div className="text-6xl opacity-60">✨</div>
+             <div className="aspect-square bg-card rounded-2xl flex items-center justify-center p-8 futuristic-border relative overflow-hidden">
+               <div className="absolute -bottom-1/4 -left-1/4 w-3/4 h-3/4 bg-accent/10 rounded-full blur-3xl"></div>
+               <div className="absolute -top-1/4 -right-1/4 w-1/2 h-1/2 bg-primary/10 rounded-full blur-3xl"></div>
+               <div className="relative w-full h-full border border-border/50 rounded-lg p-4 backdrop-blur-sm">
+                 <p className="text-6xl opacity-60">✨</p>
+                 <p className="text-sm text-muted-foreground mt-4">Creator Opportunities</p>
+               </div>
             </div>
           </div>
           <div>
@@ -40,7 +45,7 @@ const ForInfluencers = () => {
                 </li>
               ))}
             </ul>
-            <Button asChild size="lg" className="bg-accent hover:bg-accent/90 shadow-minimal">
+            <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 shadow-minimal">
               <Link to="/register?role=influencer">Create Your Influencer Profile</Link>
             </Button>
           </div>

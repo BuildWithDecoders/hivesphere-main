@@ -41,8 +41,13 @@ const ForBrands = () => {
             </Button>
           </div>
           <div className="order-1 md:order-2">
-            <div className="aspect-square bg-muted/50 rounded-2xl flex items-center justify-center p-8 futuristic-border">
-               <div className="text-6xl opacity-60">📈</div>
+            <div className="aspect-square bg-muted/50 rounded-2xl flex items-center justify-center p-8 futuristic-border relative overflow-hidden">
+               <div className="absolute -bottom-1/4 -right-1/4 w-3/4 h-3/4 bg-primary/10 rounded-full blur-3xl"></div>
+               <div className="absolute -top-1/4 -left-1/4 w-1/2 h-1/2 bg-accent/10 rounded-full blur-3xl"></div>
+               <div className="relative w-full h-full border border-border/50 rounded-lg p-4 backdrop-blur-sm">
+                 <p className="text-6xl opacity-60">📈</p>
+                 <p className="text-sm text-muted-foreground mt-4">Campaign Performance</p>
+               </div>
             </div>
           </div>
         </div>
