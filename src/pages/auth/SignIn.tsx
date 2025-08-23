@@ -5,6 +5,7 @@ import { toast } from "@/hooks/use-toast";
 import { useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { ArrowRight, CheckCircle } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const SignIn = () => {
   const nav = useNavigate();
@@ -35,7 +36,7 @@ const SignIn = () => {
       <div className="flex items-center justify-center py-12">
         <div className="mx-auto grid w-[350px] gap-6">
           <div className="grid gap-2 text-center">
-            <img src="/logo.png" alt="HiveSphere logo" className="h-8 w-auto mx-auto mb-4" />
+            <img src={logo} alt="HiveSphere logo" className="h-8 w-auto mx-auto mb-4" />
             <h1 className="text-3xl font-bold">Welcome Back</h1>
             <p className="text-balance text-muted-foreground">
               Enter your credentials to access your dashboard

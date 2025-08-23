@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import { DashboardNav } from "./DashboardNav";
 import { UserRole } from "@/pages/Onboarding";
+import logo from "@/assets/logo.png";
 
 interface DashboardLayoutProps {
   children: ReactNode;
@@ -39,7 +40,7 @@ const DashboardLayout = ({ children, userRole }: DashboardLayoutProps) => {
             </SheetTrigger>
             <SheetContent side="left" className="flex flex-col p-4">
               <div className="flex items-center gap-2 mb-8">
-                <img src="/logo.png" alt="HiveSphere logo" className="h-8 w-auto opacity-90" />
+                <img src={logo} alt="HiveSphere logo" className="h-8 w-auto opacity-90" />
               </div>
               <DashboardNav userRole={userRole} isCollapsed={false} isMobile={true} />
             </SheetContent>

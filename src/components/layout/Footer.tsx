@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const Footer = () => {
   return (
@@ -8,7 +9,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div className="col-span-2">
             <div className="flex items-center gap-2 mb-4">
-              <img src="/logo.png" alt="HiveSphere logo" className="h-8 w-auto opacity-80" />
+              <img src={logo} alt="HiveSphere logo" className="h-8 w-auto opacity-80" />
             </div>
             <p className="text-muted-foreground mb-6 max-w-md font-light">
               Connecting Nigerian brands with authentic micro and nano influencers. 
