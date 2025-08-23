@@ -139,7 +139,7 @@ const BrandDashboard = () => {
             <p className="text-muted-foreground">Here's what's happening with your campaigns today.</p>
           </div>
           <Link to="/campaigns/new">
-            <Button variant="hero" size="lg">
+            <Button variant="default" size="lg">
               <Plus className="h-4 w-4 mr-2" />
               Launch New Campaign
             </Button>
