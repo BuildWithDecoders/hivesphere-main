@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div className="col-span-2">
             <div className="flex items-center gap-2 mb-4">
-              <img src="/lovable-uploads/cdd54ec3-f5f9-41e6-b03a-6bb6ec87bb79.png" alt="HiveSphere logo" className="h-8 w-auto opacity-80" />
+              <img src="/logo.png" alt="HiveSphere logo" className="h-8 w-auto opacity-80" />
             </div>
             <p className="text-muted-foreground mb-6 max-w-md font-light">
               Connecting Nigerian brands with authentic micro and nano influencers. 

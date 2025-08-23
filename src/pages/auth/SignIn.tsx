@@ -35,7 +35,7 @@ const SignIn = () => {
       <div className="flex items-center justify-center py-12">
         <div className="mx-auto grid w-[350px] gap-6">
           <div className="grid gap-2 text-center">
-            <img src="/lovable-uploads/cdd54ec3-f5f9-41e6-b03a-6bb6ec87bb79.png" alt="HiveSphere logo" className="h-8 w-auto mx-auto mb-4" />
+            <img src="/logo.png" alt="HiveSphere logo" className="h-8 w-auto mx-auto mb-4" />
             <h1 className="text-3xl font-bold">Welcome Back</h1>
             <p className="text-balance text-muted-foreground">
               Enter your credentials to access your dashboard

@@ -19,7 +19,7 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <img 
-              src="/lovable-uploads/cdd54ec3-f5f9-41e6-b03a-6bb6ec87bb79.png" 
+              src="/logo.png" 
               alt="HiveSphere" 
               className="h-10 w-auto opacity-90"
             />
