@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Plus, Bell, DollarSign, Users, TrendingUp, Calendar, Eye, MessageCircle, Search, CheckCircle, FileText, Clock } from "lucide-react";
+import { Plus, Bell, DollarSign, Users, TrendingUp, User, Search, CheckCircle, FileText, Clock } from "lucide-react";
 import DashboardLayout from "@/components/layout/DashboardLayout";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Progress } from "@/components/ui/progress";
@@ -134,18 +134,38 @@ const BrandDashboard = () => {
     <DashboardLayout userRole="brand">
       <main className="container py-6 space-y-6">
         {/* Header / Welcome Section */}
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-bold mb-2">Welcome back, {brandName}! 👋</h1>
-            <p className="text-muted-foreground">Here's what's happening with your campaigns today.</p>
-          </div>
-          <Link to="/campaigns/new">
-            <Button variant="default" size="lg">
-              <Plus className="h-4 w-4 mr-2" />
-              Launch New Campaign
-            </Button>
-          </Link>
-        </div>
+        <Card className="bg-gradient-to-r from-primary/5 to-transparent">
+          <CardContent className="p-6 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="flex items-center gap-4">
+              <Avatar className="h-16 w-16">
+                <AvatarImage src="/placeholder.svg" alt={brandName} />
+                <AvatarFallback>{brandName.split(' ').map(n => n[0]).join('').substring(0,2)}</AvatarFallback>
+              </Avatar>
+              <div>
+                <h1 className="text-2xl font-bold">Welcome back, {brandName}!</h1>
+                <p className="text-muted-foreground">You have {quickStats.activeCampaigns} active campaigns and {quickStats.pendingApprovals} pending approvals.</p>
+                <div className="flex items-center gap-2 mt-2">
+                  <Progress value={85} className="w-32 h-2" />
+                  <span className="text-xs text-muted-foreground">Profile 85% complete</span>
+                </div>
+              </div>
+            </div>
+            <div className="flex gap-3">
+              <Button asChild variant="outline">
+                <Link to="/dashboard/brand/profile">
+                  <User className="h-4 w-4 mr-2" />
+                  Edit Profile
+                </Link>
+              </Button>
+              <Button asChild>
+                <Link to="/campaigns/new">
+                  <Plus className="h-4 w-4 mr-2" />
+                  New Campaign
+                </Link>
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
 
         {/* Quick Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
