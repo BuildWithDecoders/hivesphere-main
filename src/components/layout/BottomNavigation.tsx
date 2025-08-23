@@ -43,11 +43,11 @@ const BottomNavigation = ({ userRole }: BottomNavigationProps) => {
                 className={cn(
                   "flex flex-col items-center justify-center py-2 px-3 rounded-xl transition-all duration-200 flex-1",
                   isActive
-                    ? "text-primary bg-primary/10"
+                    ? "text-primary" // Simplified active state
                     : "text-muted-foreground hover:text-primary hover:bg-primary/5"
                 )}
               >
-                <Icon className={cn("h-5 w-5 mb-1 transition-transform duration-200", isActive && "scale-110")} />
+                <Icon className={cn("h-5 w-5 transition-transform duration-200", isActive && "")} /> {/* Removed mb-1 and scale-110 */}
                 <span className={cn("text-xs font-medium truncate", isActive && "font-semibold")}>{label}</span>
               </Link>
             );
